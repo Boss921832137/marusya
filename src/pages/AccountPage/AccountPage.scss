@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+
+.account-page {
+  padding: 32px 0 80px;
+
+  &__title {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 64px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+  }
+
+  &__value {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+  }
+
+  &__logout {
+    width: 260px;
+    height: $button-height;
+    margin-top: 64px;
+    border: none;
+    border-radius: $button-radius;
+    background-color: $color-accent;
+    color: $color-text-primary;
+    font-weight: 700;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #4f8fd8;
+    }
+  }
+}

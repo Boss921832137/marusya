@@ -1,0 +1,15 @@
+.genres-page {
+  padding: 32px 0 80px;
+
+  &__title {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 40px;
+    margin-top: 64px;
+  }
+}

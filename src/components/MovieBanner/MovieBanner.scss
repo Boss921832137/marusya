@@ -1,0 +1,115 @@
+@use '../../styles/variables' as *;
+
+.movie-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 520px;
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 65%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    mask-image: linear-gradient(to right, transparent 0%, #000000 40%);
+  }
+
+  &__info {
+    position: relative;
+    max-width: 600px;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__rating {
+    padding: 4px 12px;
+    border-radius: 16px;
+    background-color: $color-accent;
+    color: $color-text-primary;
+    font-weight: 700;
+  }
+
+  &__title {
+    margin-top: 16px;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  &__plot {
+    margin-top: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 60px;
+  }
+
+  &__trailer-button,
+  &__favorite-button {
+    height: $button-height;
+    border: none;
+    border-radius: $button-radius;
+    color: $color-text-primary;
+    font-weight: 700;
+    transition: background-color 0.2s;
+  }
+
+  &__trailer-button {
+    padding: 0 48px;
+    background-color: $color-accent;
+
+    &:hover {
+      background-color: #4f8fd8;
+    }
+  }
+
+  &__favorite-button {
+    padding: 0 24px;
+    background-color: $color-background-secondary;
+
+    &:hover {
+      background-color: #4c4f50;
+    }
+  }
+
+  &__details-button,
+  &__refresh-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: -height;
+    border: none;
+    border-radius: -radius;
+    background-color: -background-secondary;
+    color: -text-primary;
+    font-weight: 700;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #4c4f50;
+    }
+  }
+
+  &__details-button {
+    padding: 0 48px;
+  }
+
+  &__refresh-button {
+    width: -height;
+    padding: 0;
+    font-size: 24px;
+  }
+}

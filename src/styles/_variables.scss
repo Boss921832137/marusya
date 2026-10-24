@@ -1,0 +1,31 @@
+// Значения взяты из макета Figma. В комментариях — имя переменной в макете.
+
+// Шрифт
+$font-main: 'Play', sans-serif;
+$font-size-body: 18px; // body 18 bold
+$line-height-body: 24px;
+
+// Цвета текста
+$color-text-primary: #ffffff; // content/primary
+$color-text-disabled: rgba(255, 255, 255, 0.5); // content/disabled
+$color-text-black: #000000; // content/black
+$color-text-active: #b4a9ff; // content/active
+$color-text-placeholder: rgba(0, 0, 0, 0.4); // content/placeholder
+
+// Цвета фонов
+$color-accent: #67a5eb; // фон основной кнопки (Primary)
+$color-background-secondary: #393b3c; // background/secondary
+$color-background-white: #ffffff; // background/white
+
+// Фон страницы: в макете два градиента, наложенных друг на друга
+$gradient-page:
+  linear-gradient(180deg, #000000 0%, rgba(39, 36, 36, 0.7) 100%),
+  linear-gradient(180deg, rgba(39, 135, 245, 0.9) 0%, rgba(163, 147, 245, 0.9) 100%);
+
+// Кнопки
+$button-height: 56px;
+$button-radius: 28px;
+
+// Ширина макетов
+$width-desktop: 1440px;
+$width-mobile: 375px;

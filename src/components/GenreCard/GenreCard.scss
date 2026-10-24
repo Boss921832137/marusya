@@ -1,0 +1,22 @@
+@use '../../styles/variables' as *;
+
+.genre-card {
+  display: flex;
+  align-items: flex-end;
+  height: 220px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(39, 135, 245, 0.35), rgba(163, 147, 245, 0.35));
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+
+  &:hover {
+    transform: scale(1.03);
+    border-color: $color-text-active;
+  }
+}

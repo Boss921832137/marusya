@@ -1,0 +1,16 @@
+.home-page {
+  padding: 32px 0 80px;
+
+  &__top-title {
+    margin-top: 40px;
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  &__top-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+  }
+}
