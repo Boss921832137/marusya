@@ -55,4 +55,36 @@
       transform: rotate(90deg);
     }
   }
+
+  @include tablet {
+    &__content--video &__close {
+      top: -56px;
+      right: 0;
+    }
+  }
+
+  @include mobile {
+    &__content {
+      padding: 56px 20px 32px;
+    }
+
+    &__content--video {
+      padding: 0;
+    }
+
+    &__close {
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      background-color: #f2f2f2;
+      font-size: 22px;
+    }
+
+    &__content--video &__close {
+      top: -48px;
+      right: 0;
+      background-color: $color-background-white;
+    }
+  }
 }

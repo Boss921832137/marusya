@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  padding: 40px 0;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 18px;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__copyright {
+    color: $color-text-disabled;
+    font-size: 14px;
+  }
+
+  @include mobile {
+    padding: 32px 0;
+  }
+}

@@ -10,8 +10,7 @@
   }
 
   &__logo {
-    font-size: 32px;
-    font-weight: 700;
+    display: flex;
   }
 
   &__nav {
@@ -34,8 +33,15 @@
     }
   }
 
+  &__genres {
+    display: none;
+  }
+
   &__search {
+    display: flex;
     flex-grow: 1;
+    align-items: center;
+    gap: 12px;
     max-width: 560px;
     height: 48px;
     padding: 12px 16px;
@@ -53,6 +59,8 @@
   }
 
   &__login {
+    display: flex;
+    align-items: center;
     margin-left: auto;
     padding: 0;
     border: none;
@@ -64,6 +72,76 @@
 
     &:hover {
       color: $color-text-active;
+    }
+  }
+
+  &__login-icon {
+    display: none;
+  }
+
+  @include tablet {
+    &__inner {
+      gap: 24px;
+    }
+
+    &__nav {
+      gap: 24px;
+    }
+
+    &__link,
+    &__login {
+      font-size: 20px;
+    }
+  }
+
+  @include mobile {
+    padding: 16px 0;
+
+    &__inner {
+      gap: 20px;
+    }
+
+    &__logo {
+      margin-right: auto;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__genres {
+      display: flex;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $color-text-active;
+      }
+    }
+
+    &__search {
+      flex-grow: 0;
+      height: auto;
+      padding: 0;
+      background: none;
+      color: $color-text-primary;
+
+      &:hover {
+        background: none;
+        color: $color-text-active;
+      }
+    }
+
+    &__search-text,
+    &__login-text {
+      display: none;
+    }
+
+    &__login {
+      margin-left: 0;
+    }
+
+    &__login-icon {
+      display: flex;
     }
   }
 }

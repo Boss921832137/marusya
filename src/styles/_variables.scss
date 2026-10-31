@@ -29,3 +29,19 @@ $button-radius: 28px;
 // Ширина макетов
 $width-desktop: 1440px;
 $width-mobile: 375px;
+
+// Адаптив: точки перелома и миксины
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 768px;
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}

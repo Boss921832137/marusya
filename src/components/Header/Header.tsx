@@ -4,6 +4,10 @@ import { SearchModal } from '../SearchModal/SearchModal'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { AuthModal } from '../AuthModal/AuthModal'
 import { closeAuthModal, openAuthModal } from '../../store/authSlice'
+import { Logo } from '../Logo/Logo'
+import { GenresIcon } from '../icons/GenresIcon'
+import { SearchIcon } from '../icons/SearchIcon'
+import { UserIcon } from '../icons/UserIcon'
 import './Header.scss'
 
 interface NavigationLink {
@@ -43,8 +47,8 @@ export function Header() {
     <>
       <header className="header">
         <div className="container header__inner">
-          <Link to="/" className="header__logo">
-            маруся
+          <Link to="/" className="header__logo" aria-label="На главную">
+            <Logo />
           </Link>
           <nav className="header__nav">
             {navigationLinks.map((link) => (
@@ -59,16 +63,36 @@ export function Header() {
               </NavLink>
             ))}
           </nav>
-          <button className="header__search" onClick={handleSearchClick} type="button">
-            Поиск
+          <Link className="header__genres" to="/genres" aria-label="Жанры">
+            <GenresIcon />
+          </Link>
+          <button
+            className="header__search"
+            onClick={handleSearchClick}
+            type="button"
+            aria-label="Поиск"
+          >
+            <SearchIcon />
+            <span className="header__search-text">Поиск</span>
           </button>
           {user ? (
-            <Link className="header__login" to="/account">
-              {user.surname}
+            <Link className="header__login" to="/account" aria-label="Мой аккаунт">
+              <span className="header__login-icon">
+                <UserIcon />
+              </span>
+              <span className="header__login-text">{user.surname}</span>
             </Link>
           ) : (
-            <button className="header__login" onClick={handleAuthModalClick} type="button">
-              Войти
+            <button
+              className="header__login"
+              onClick={handleAuthModalClick}
+              type="button"
+              aria-label="Войти"
+            >
+              <span className="header__login-icon">
+                <UserIcon />
+              </span>
+              <span className="header__login-text">Войти</span>
             </button>
           )}
         </div>

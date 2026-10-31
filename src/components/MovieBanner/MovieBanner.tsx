@@ -8,6 +8,7 @@ import { getProfile } from '../../api/auth'
 import { openAuthModal, setUser } from '../../store/authSlice'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { HeartIcon } from '../icons/HeartIcon'
+import { RefreshIcon } from '../icons/RefreshIcon'
 import './MovieBanner.scss'
 
 interface MovieBannerProps {
@@ -98,7 +99,7 @@ export function MovieBanner({ movie, hasDetailsLink, onRefresh }: MovieBannerPro
               onClick={onRefresh}
               aria-label="Другой фильм"
             >
-              ↻
+              <RefreshIcon />
             </button>
           )}
         </div>

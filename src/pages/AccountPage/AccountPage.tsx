@@ -4,6 +4,7 @@ import { logout } from '../../api/auth'
 import { clearUser } from '../../store/authSlice'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { FavoriteMovies } from '../../components/FavoriteMovies/FavoriteMovies'
+import { MailIcon } from '../../components/icons/MailIcon'
 import './AccountPage.scss'
 
 type AccountTab = 'favorites' | 'settings'
@@ -67,7 +68,9 @@ export function AccountPage() {
               </div>
             </div>
             <div className="account-page__row">
-              <span className="account-page__avatar">✉</span>
+              <span className="account-page__avatar">
+                <MailIcon />
+              </span>
               <div>
                 <p className="account-page__label">Электронная почта</p>
                 <p className="account-page__value">{user.email}</p>

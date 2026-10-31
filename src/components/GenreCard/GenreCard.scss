@@ -19,4 +19,9 @@
     transform: scale(1.03);
     border-color: $color-text-active;
   }
+
+  @include mobile {
+    height: 160px;
+    padding: 20px;
+  }
 }

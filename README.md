@@ -1,75 +1,41 @@
-# React + TypeScript + Vite
+# ВК Маруся
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Мой дипломный проект по курсу React.js в Skillbox. Это онлайн-кинотеатр, где можно смотреть информацию о фильмах, искать их и добавлять в избранное.
 
-Currently, two official plugins are available:
+## Что есть в проекте
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- главная страница со случайным фильмом (его можно поменять кнопкой) и топ-10 фильмов
+- страница жанров и страница каждого жанра, фильмы подгружаются по 10 штук при прокрутке
+- страница фильма с описанием и трейлером
+- поиск фильмов по названию
+- регистрация и вход, после обновления страницы вход не слетает
+- избранное и страница аккаунта
+- сайт нормально смотрится и на телефоне
 
-## React Compiler
+## На чём сделано
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React 18, TypeScript, Vite, React Router, Redux Toolkit, Axios, SCSS. Для проверки кода использовал ESLint и Prettier.
 
-## Expanding the ESLint configuration
+Данные беру с API Skillbox: https://cinemaguide.skillbox.cc/docs/
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Как запустить
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Нужен Node.js.
 
 ```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+npm install
+npm run dev
 ```
+
+Потом открыть в браузере адрес, который появится в терминале (обычно http://localhost:5173).
+
+## Как устроены папки
+
+- `api` запросы к серверу
+- `components` компоненты
+- `pages` страницы
+- `hooks` мои хуки для загрузки данных
+- `store` Redux (данные пользователя)
+- `types` типы
+- `utils` и `constants` всякие вспомогательные функции и данные
+- `styles` общие стили и переменные
