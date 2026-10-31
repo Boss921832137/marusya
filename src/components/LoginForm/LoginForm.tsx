@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { getProfile, login } from '../../api/auth'
+import { loginAndGetProfile } from '../../api/auth'
 import { useAppDispatch } from '../../store/hooks'
 import { setUser } from '../../store/authSlice'
 import './LoginForm.scss'
@@ -31,8 +31,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
     setIsSending(true)
 
     try {
-      await login(email, password)
-      const profile = await getProfile()
+      const profile = await loginAndGetProfile(email, password)
       dispatch(setUser(profile))
       onSuccess()
     } catch {

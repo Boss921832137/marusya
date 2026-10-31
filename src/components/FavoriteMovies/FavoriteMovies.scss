@@ -1,0 +1,6 @@
+.favorite-movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  gap: 40px;
+  margin-top: 64px;
+}

@@ -8,6 +8,27 @@
     line-height: 56px;
   }
 
+  &__tabs {
+    display: flex;
+    gap: 64px;
+    margin-top: 64px;
+  }
+
+  &__tab {
+    padding: 0 0 8px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: $color-text-primary;
+    font-size: 24px;
+    line-height: 32px;
+    transition: border-color 0.2s;
+
+    &--active {
+      border-bottom-color: $color-text-active;
+    }
+  }
+
   &__info {
     display: flex;
     flex-direction: column;

@@ -1,35 +1,12 @@
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment } from 'react'
 import { useParams } from 'react-router'
-import { getMovieById } from '../../api/movies'
-import type { Movie } from '../../types/movie'
 import { MovieBanner } from '../../components/MovieBanner/MovieBanner'
+import { useMovie } from '../../hooks/useMovie'
 import './MoviePage.scss'
 
 export function MoviePage() {
-  const [movie, setMovie] = useState<Movie | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
   const { movieId } = useParams()
-
-  useEffect(() => {
-    if (!movieId) {
-      return
-    }
-
-    const loadMovie = async () => {
-      try {
-        const loadedMovie = await getMovieById(movieId)
-        setMovie(loadedMovie)
-      } catch {
-        setErrorMessage('Не удалось загрузить фильм')
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    loadMovie()
-  }, [movieId])
+  const { movie, isLoading, errorMessage } = useMovie(movieId)
 
   if (isLoading) {
     return <p className="container status-message">Загрузка...</p>

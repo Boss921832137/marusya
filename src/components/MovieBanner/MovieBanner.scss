@@ -77,11 +77,18 @@
   }
 
   &__favorite-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0 24px;
     background-color: $color-background-secondary;
 
     &:hover {
       background-color: #4c4f50;
+    }
+
+    &--active {
+      color: $color-text-active;
     }
   }
 

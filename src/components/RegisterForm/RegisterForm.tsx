@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react'
-import { getProfile, login, register } from '../../api/auth'
+import { loginAndGetProfile, register } from '../../api/auth'
 import { useAppDispatch } from '../../store/hooks'
 import { setUser } from '../../store/authSlice'
 import '../LoginForm/LoginForm.scss'
@@ -28,6 +28,10 @@ function getInputClassName(isInvalid: boolean): string {
   return isInvalid ? 'auth-form__input auth-form__input--error' : 'auth-form__input'
 }
 
+function hasEmptyField(formValues: RegisterFormValues): boolean {
+  return Object.values(formValues).some((value) => value.trim() === '')
+}
+
 export function RegisterForm({ onSuccess }: RegisterFormProps) {
   const [formValues, setFormValues] = useState<RegisterFormValues>(initialFormValues)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -44,8 +48,7 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
     event.preventDefault()
     setIsSubmitted(true)
 
-    const hasEmptyField = Object.values(formValues).some((value) => value.trim() === '')
-    if (hasEmptyField) {
+    if (hasEmptyField(formValues)) {
       return
     }
 
@@ -64,8 +67,7 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
         name: formValues.name,
         surname: formValues.surname,
       })
-      await login(formValues.email, formValues.password)
-      const profile = await getProfile()
+      const profile = await loginAndGetProfile(formValues.email, formValues.password)
       dispatch(setUser(profile))
       onSuccess()
     } catch {

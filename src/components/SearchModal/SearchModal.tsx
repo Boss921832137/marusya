@@ -1,11 +1,8 @@
-import { useState, useEffect, type ChangeEvent } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router'
-import { searchMovies } from '../../api/movies'
-import type { Movie } from '../../types/movie'
 import { Modal } from '../Modal/Modal'
+import { useMovieSearch } from '../../hooks/useMovieSearch'
 import './SearchModal.scss'
-
-const SEARCH_DELAY_MS = 500
 
 interface SearchModalProps {
   onClose: () => void
@@ -13,46 +10,7 @@ interface SearchModalProps {
 
 export function SearchModal({ onClose }: SearchModalProps) {
   const [searchQuery, setSearchQuery] = useState('')
-  const [foundMovies, setFoundMovies] = useState<Movie[]>([])
-  const [isSearching, setIsSearching] = useState(false)
-
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value)
-    setIsSearching(true)
-  }
-
-  useEffect(() => {
-    const trimmedQuery = searchQuery.trim()
-
-    if (!trimmedQuery) {
-      return
-    }
-
-    let isCancelled = false
-
-    const timeoutId = setTimeout(async () => {
-      try {
-        const movies = await searchMovies(trimmedQuery)
-
-        if (!isCancelled) {
-          setFoundMovies(movies)
-        }
-      } catch {
-        if (!isCancelled) {
-          setFoundMovies([])
-        }
-      } finally {
-        if (!isCancelled) {
-          setIsSearching(false)
-        }
-      }
-    }, SEARCH_DELAY_MS)
-
-    return () => {
-      isCancelled = true
-      clearTimeout(timeoutId)
-    }
-  }, [searchQuery])
+  const { foundMovies, isSearching } = useMovieSearch(searchQuery)
 
   const hasQuery = searchQuery.trim() !== ''
 
@@ -63,7 +21,7 @@ export function SearchModal({ onClose }: SearchModalProps) {
         type="search"
         placeholder="Название фильма"
         value={searchQuery}
-        onChange={handleSearchChange}
+        onChange={(event) => setSearchQuery(event.target.value)}
         autoFocus
       />
       {hasQuery && isSearching && <p className="search-modal__status">Ищем...</p>}

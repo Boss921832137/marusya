@@ -3,6 +3,11 @@ import { Link } from 'react-router'
 import type { Movie } from '../../types/movie'
 import { formatRating, formatRuntime } from '../../utils/formatters'
 import { Modal } from '../Modal/Modal'
+import { addToFavorites, removeFromFavorites } from '../../api/favorites'
+import { getProfile } from '../../api/auth'
+import { openAuthModal, setUser } from '../../store/authSlice'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { HeartIcon } from '../icons/HeartIcon'
 import './MovieBanner.scss'
 
 interface MovieBannerProps {
@@ -14,12 +19,36 @@ interface MovieBannerProps {
 export function MovieBanner({ movie, hasDetailsLink, onRefresh }: MovieBannerProps) {
   const [isTrailerOpen, setIsTrailerOpen] = useState(false)
 
+  const user = useAppSelector((state) => state.auth.user)
+  const dispatch = useAppDispatch()
+
+  const isFavorite = user ? user.favorites.includes(String(movie.id)) : false
+
   const handleTrailerClick = () => {
     setIsTrailerOpen(true)
   }
 
   const handleTrailerClose = () => {
     setIsTrailerOpen(false)
+  }
+
+  const handleFavoriteClick = async () => {
+    if (!user) {
+      dispatch(openAuthModal())
+      return
+    }
+
+    try {
+      if (isFavorite) {
+        await removeFromFavorites(movie.id)
+      } else {
+        await addToFavorites(movie.id)
+      }
+      const profile = await getProfile()
+      dispatch(setUser(profile))
+    } catch {
+      // запрос не прошёл — сердечко остаётся как было
+    }
   }
 
   return (
@@ -46,8 +75,16 @@ export function MovieBanner({ movie, hasDetailsLink, onRefresh }: MovieBannerPro
               Трейлер
             </button>
           )}
-          <button className="movie-banner__favorite-button" type="button">
-            ♡
+          <button
+            className={
+              isFavorite
+                ? 'movie-banner__favorite-button movie-banner__favorite-button--active'
+                : 'movie-banner__favorite-button'
+            }
+            type="button"
+            onClick={handleFavoriteClick}
+          >
+            <HeartIcon isFilled={isFavorite} />
           </button>
           {hasDetailsLink && (
             <Link className="movie-banner__details-button" to={`/movie/${movie.id}`}>

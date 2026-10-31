@@ -1,6 +1,11 @@
 import { apiClient } from './apiClient'
 import type { RegisterData, User } from '../types/user'
 
+export async function loginAndGetProfile(email: string, password: string): Promise<User> {
+  await login(email, password)
+  return getProfile()
+}
+
 export async function login(email: string, password: string): Promise<void> {
   await apiClient.post('/auth/login', { email, password })
 }

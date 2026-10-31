@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import { SearchModal } from '../SearchModal/SearchModal'
-import { useAppSelector } from '../../store/hooks'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { AuthModal } from '../AuthModal/AuthModal'
+import { closeAuthModal, openAuthModal } from '../../store/authSlice'
 import './Header.scss'
 
 interface NavigationLink {
@@ -16,16 +17,18 @@ const navigationLinks: NavigationLink[] = [
 ]
 
 export function Header() {
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const user = useAppSelector((state) => state.auth.user)
 
+  const isAuthModalOpen = useAppSelector((state) => state.auth.isAuthModalOpen)
+  const dispatch = useAppDispatch()
+
   const handleAuthModalClick = () => {
-    setIsAuthModalOpen(true)
+    dispatch(openAuthModal())
   }
 
   const handleAuthModalClose = () => {
-    setIsAuthModalOpen(false)
+    dispatch(closeAuthModal())
   }
 
   const handleSearchClick = () => {
