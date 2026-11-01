@@ -48,6 +48,28 @@
     font-weight: 700;
   }
 
+  &__remove {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: $color-background-white;
+    color: $color-text-black;
+    font-size: 22px;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
   @include mobile {
     &__title {
       font-size: 16px;

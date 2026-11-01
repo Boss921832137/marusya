@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { useParams } from 'react-router'
 import { MovieBanner } from '../../components/MovieBanner/MovieBanner'
 import { useMovie } from '../../hooks/useMovie'
@@ -36,14 +35,14 @@ export function MoviePage() {
       <MovieBanner movie={movie} />
       <section className="movie-page__about">
         <h2 className="movie-page__about-title">О фильме</h2>
-        <dl className="movie-page__details">
+        <ul className="movie-page__details">
           {filledMovieDetails.map((detail) => (
-            <Fragment key={detail.name}>
-              <dt className="movie-page__detail-name">{detail.name}</dt>
-              <dd className="movie-page__detail-value">{detail.value}</dd>
-            </Fragment>
+            <li key={detail.name} className="movie-page__detail">
+              <span className="movie-page__detail-name">{detail.name}</span>
+              <span className="movie-page__detail-value">{detail.value}</span>
+            </li>
           ))}
-        </dl>
+        </ul>
       </section>
     </div>
   )

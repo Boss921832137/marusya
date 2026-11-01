@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { LoginForm } from '../LoginForm/LoginForm'
+import { Logo } from '../Logo/Logo'
 import { Modal } from '../Modal/Modal'
 import { RegisterForm } from '../RegisterForm/RegisterForm'
 
@@ -14,6 +15,9 @@ export function AuthModal({ onClose }: AuthModalProps) {
 
   return (
     <Modal onClose={onClose}>
+      <div className="auth-form__logo">
+        <Logo />
+      </div>
       {mode === 'login' ? <LoginForm onSuccess={onClose} /> : <RegisterForm onSuccess={onClose} />}
 
       {mode === 'login' ? (

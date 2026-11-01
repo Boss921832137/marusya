@@ -6,9 +6,10 @@ interface MovieCardProps {
   title: string
   posterUrl: string | null
   rating: number
+  onRemove?: () => void
 }
 
-export function MovieCard({ id, title, posterUrl, rating }: MovieCardProps) {
+export function MovieCard({ id, title, posterUrl, rating, onRemove }: MovieCardProps) {
   return (
     <article className="movie-card">
       <Link to={`/movie/${id}`} className="movie-card__link">
@@ -20,6 +21,16 @@ export function MovieCard({ id, title, posterUrl, rating }: MovieCardProps) {
         <h3 className="movie-card__title">{title}</h3>
         <span className="movie-card__rating">{rating}</span>
       </Link>
+      {onRemove && (
+        <button
+          className="movie-card__remove"
+          type="button"
+          onClick={onRemove}
+          aria-label="Удалить из избранного"
+        >
+          ×
+        </button>
+      )}
     </article>
   )
 }

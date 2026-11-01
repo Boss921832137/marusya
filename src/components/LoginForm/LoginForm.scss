@@ -58,12 +58,26 @@
     }
   }
 
+  &__logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
   &__switch {
-    padding: 0;
+    width: 100%;
+    height: $button-height;
+    margin-top: 16px;
     border: none;
+    border-radius: $button-radius;
     background: none;
     color: $color-text-black;
+    font-size: $font-size-body;
     font-weight: 700;
-    text-decoration: underline;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
   }
 }
